@@ -1,4 +1,4 @@
-class Jugador{
+class Jugador extends Entidad {
   private float ancho = 50;
   private float alto = 50;
   private int direccion = 0;
