@@ -1,6 +1,6 @@
 class Enemigo extends Entidad {
-  private float tam = 40;
-  private float velocidad = 4;
+  private float tam = 50;
+  private float velocidad = 7;
 
   Enemigo(float x, float y) {
     super(x, y);
