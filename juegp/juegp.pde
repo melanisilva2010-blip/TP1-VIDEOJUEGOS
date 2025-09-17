@@ -2,12 +2,17 @@ Jugador jugador;
 ArrayList<Enemigo> enemigos; 
 int estadoJuego = 0; 
 
+PImage imgCarga, imgGameOver;
+
 void setup() {
   size(600, 400);
   jugador = new Jugador(width/2, height-40);
 
+  imgCarga = loadImage("Cubic Running.jpg");
+  imgGameOver = loadImage("game over.jpg");
+
   enemigos = new ArrayList<Enemigo>();
-  for (int i = 0; i < 5; i++) { 
+  for (int i = 0; i < 5; i++) {
     enemigos.add(new Enemigo(random(width), random(-400, 0)));
   }
 }
@@ -16,16 +21,11 @@ void draw() {
   background(0);
 
   if (estadoJuego == 0) {
-    // Pantalla de carga
-    fill(255);
-    textAlign(CENTER, CENTER);
-    textSize(32);
-    text(" Mi Juego de Naves ", width/2, height/2 - 40);
-    textSize(20);
-    text("Presiona ESPACIO para comenzar", width/2, height/2 + 20);
+    // Pantalla de carga 
+    image(imgCarga, 0, 0, width, height);
   } 
   else if (estadoJuego == 1) {
-
+    // Juego activo
     jugador.mover();
     jugador.mostrar();
 
@@ -39,14 +39,8 @@ void draw() {
     }
   } 
   else if (estadoJuego == 2) {
-    // Game Over
-    fill(255, 0, 0);
-    textAlign(CENTER, CENTER);
-    textSize(40);
-    text("GAME OVER", width/2, height/2 - 40);
-    textSize(20);
-    fill(255);
-    text("Presiona ESPACIO para reiniciar", width/2, height/2 + 20);
+    // Game Over 
+    image(imgGameOver, 0, 0, width, height);
   }
 }
 
